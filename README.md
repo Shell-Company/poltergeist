@@ -27,12 +27,13 @@ OR
 ` <script> | ./poltergeist -decode -stdin`
 
 ## Flags
-
+```
 -encode: Encode text as whitespace
 -decode: Decode text from whitespace
 -file: Specify an input file. If stdin is specified, this flag is ignored.
 -stdin: Read from stdin.
 -test: Print the table of whitespace characters to see how your shell interprets them
+```
 
 ## Example
 
