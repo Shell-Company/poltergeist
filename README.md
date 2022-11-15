@@ -1,6 +1,6 @@
 # poltergeist 👻
 
-There are 26 unique whitespace characters supported in unicode. This is enough to represent every latin letter as whitespace. 
+There are 26 unique whitespace characters supported in unicode. This is enough to represent every latin letter as whitespace, but to make this PoC more robust we instead use the 16 characters used in hexadecimal.
 
 This tool can be used to encode and decode text as whitespace. This can be useful for steganography or creating unreadable text.
 
