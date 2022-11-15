@@ -4,6 +4,10 @@ There are 26 unique whitespace characters supported in unicode. This is enough t
 
 This tool can be used to encode and decode text as whitespace. This can be useful for steganography or creating unreadable text.
 
+## Install 
+
+`go install github.com/shell-company/poltergeist/cmd/poltergeist@latest   `
+
 ## Usage
 
 To encode:
