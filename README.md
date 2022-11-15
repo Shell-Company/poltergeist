@@ -9,7 +9,7 @@ This tool can be used to encode and decode text as whitespace. This can be usefu
 `go install github.com/shell-company/poltergeist/cmd/poltergeist@latest   `
 
 ## Usage
-
+<img src="./geist.gif">
 To encode:
 
 `./poltergeist -encode -file <input_file>`
