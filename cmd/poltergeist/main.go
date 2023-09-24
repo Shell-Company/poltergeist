@@ -11,6 +11,7 @@ import (
 var (
 	inputFile        = flag.String("file", "", "Input file")
 	flagStdin        = flag.Bool("stdin", false, "Read from stdin")
+	flagString       = flag.String("string", "", "String to encode/decode")
 	flagEncode       = flag.Bool("encode", false, "Encode whitespace")
 	flagDecode       = flag.Bool("decode", false, "Decode whitespace")
 	flagTest         = flag.Bool("test", false, "print whitespace table")
@@ -84,13 +85,19 @@ func init() {
 		fmt.Println("One of encode or decode must be set")
 		os.Exit(1)
 	}
-
 	// check that input file is set or stdin is set
-	if *inputFile == "" && !*flagStdin {
+	if *inputFile == "" && !*flagStdin && *flagString == "" {
 		fmt.Println("One of input file or stdin must be set")
 		os.Exit(1)
 	}
+}
 
+func main() {
+
+	if *flagString != "" {
+		fileBytes = []byte(*flagString)
+
+	}
 	if *flagStdin {
 		// read stdin
 		var err error
@@ -99,29 +106,23 @@ func init() {
 			fmt.Println(err)
 			os.Exit(1)
 		}
-	} else {
-		if *inputFile == "" {
-			fmt.Println("Input file path must be set")
+	}
+	if *inputFile != "" {
+		//  read inputFile
+		openFile, err := os.Open(*inputFile)
+		if err != nil {
+			fmt.Println(err)
 			os.Exit(1)
-		} else {
-			//  read inputFile
-			openFile, err := os.Open(*inputFile)
-			if err != nil {
-				fmt.Println(err)
-				os.Exit(1)
-			}
-			defer openFile.Close()
-			// process bytes
-			fileBytes, err = io.ReadAll((openFile))
-			if err != nil {
-				fmt.Println(err)
-				os.Exit(1)
-			}
+		}
+		defer openFile.Close()
+		// process bytes
+		fileBytes, err = io.ReadAll((openFile))
+		if err != nil {
+			fmt.Println(err)
+			os.Exit(1)
 		}
 	}
-}
 
-func main() {
 	if *flagTest {
 		printAllWhiteSpace()
 		os.Exit(0)
